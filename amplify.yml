@@ -9,9 +9,9 @@ frontend:
         - npm install --legacy-peer-deps
     build:
       commands:
-        - npm run build -- --configuration=production --output-path=dist
+        - npm run build -- --configuration=production
   artifacts:
-    baseDirectory: dist
+    baseDirectory: dist/virtual-machines-front
     files:
       - '**/*'
   customHeaders:
