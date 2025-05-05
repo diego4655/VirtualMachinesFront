@@ -54,7 +54,7 @@ body {
 
 /* Custom styles for PrimeNG components */
 .p-inputtext {
-  width: 32vw;
+  width: 23vw;
   font-size: 1.1rem;
   padding: 0.75rem;
   border-radius: var(--border-radius);
