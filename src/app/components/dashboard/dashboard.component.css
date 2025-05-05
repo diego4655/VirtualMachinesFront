@@ -90,7 +90,7 @@
 /* Dialog styles */
 :host ::ng-deep .p-dialog {
   .p-dialog-header {
-    background: #f8f9fa;
+    background: #374151;
     border-bottom: 1px solid #dee2e6;
     padding: 1.5rem;
   }
@@ -112,7 +112,7 @@
 .field label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #495057;
+  color: #dee2e6;
   font-weight: 500;
 }
 

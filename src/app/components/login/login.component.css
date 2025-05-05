@@ -38,6 +38,12 @@
     }
   }
 
+  ::ng-deep .p-password .p-icon {
+    cursor: pointer !important;
+    vertical-align: bottom !important;
+    margin-left: 1vw !important;
+}
+
   .p-inputtext,
   .p-password {
     width: 100%;
