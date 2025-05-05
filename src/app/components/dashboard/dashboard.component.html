@@ -1,0 +1,108 @@
+<div class="dashboard-container">
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+
+  <div class="card">
+    <div class="header">
+      <h2>Máquinas Virtuales</h2>
+      <div class="header-actions">
+        <button *ngIf="isAdmin" pButton pRipple label="Nueva VM" icon="pi pi-plus" class="p-button-success" (click)="openNew()"></button>
+        <button pButton pRipple label="Cerrar Sesión" icon="pi pi-sign-out" class="p-button-danger" (click)="logout()"></button>
+      </div>
+    </div>
+
+    <p-table 
+      [value]="virtualMachines" 
+      [loading]="loading"
+      [paginator]="true" 
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} máquinas virtuales"
+      [rowsPerPageOptions]="[10,25,50]"
+      styleClass="p-datatable-gridlines"
+      responsiveLayout="scroll">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Cores</th>
+          <th>RAM (GB)</th>
+          <th>Disco (GB)</th>
+          <th>Sistema Operativo</th>
+          <th>Estado</th>
+          <th *ngIf="isAdmin">Acciones</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-vm>
+        <tr>
+          <td>{{vm.name}}</td>
+          <td>{{vm.cores}}</td>
+          <td>{{vm.ramGB}}</td>
+          <td>{{vm.diskGB}}</td>
+          <td>{{vm.operatingSystem}}</td>
+          <td>
+            <span [class]="'status-badge status-' + vm.status.toLowerCase()">
+              {{vm.status}}
+            </span>
+          </td>
+          <td *ngIf="isAdmin">
+            <div class="actions">
+              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-text" (click)="editVM(vm)"></button>
+              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text" (click)="deleteVM(vm)"></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7" class="text-center">No hay máquinas virtuales disponibles.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-dialog 
+    [(visible)]="vmDialog" 
+    [style]="{width: '450px'}" 
+    header="Detalles de la Máquina Virtual" 
+    [modal]="true" 
+    styleClass="p-fluid">
+    
+    <div class="field">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" pInputText [(ngModel)]="vm.name" required autofocus />
+    </div>
+
+    <div class="field">
+      <label for="cores">Cores</label>
+      <p-inputNumber id="cores" [(ngModel)]="vm.cores" [min]="1" [max]="32"></p-inputNumber>
+    </div>
+
+    <div class="field">
+      <label for="ramGB">RAM (GB)</label>
+      <p-inputNumber id="ramGB" [(ngModel)]="vm.ramGB" [min]="1" [max]="128"></p-inputNumber>
+    </div>
+
+    <div class="field">
+      <label for="diskGB">Disco (GB)</label>
+      <p-inputNumber id="diskGB" [(ngModel)]="vm.diskGB" [min]="10" [max]="2000"></p-inputNumber>
+    </div>
+
+    <div class="field">
+      <label for="operatingSystem">Sistema Operativo</label>
+      <p-dropdown id="operatingSystem" [options]="sistemasOperativos" [(ngModel)]="vm.operatingSystem" optionLabel="label" optionValue="value" placeholder="Seleccione un sistema operativo" appendTo="body"></p-dropdown>
+    </div>
+
+    <div class="field">
+      <label for="status">Estado</label>
+      <p-dropdown id="status" [options]="estados" [(ngModel)]="vm.status" optionLabel="label" optionValue="value" placeholder="Seleccione un estado" appendTo="body"></p-dropdown>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <button pButton pRipple icon="pi pi-times" label="Cancelar" class="p-button-text" (click)="hideDialog()"></button>
+      <button pButton pRipple icon="pi pi-check" label="Guardar" class="p-button-text" (click)="saveVM()"></button>
+    </ng-template>
+  </p-dialog>
+</div> 

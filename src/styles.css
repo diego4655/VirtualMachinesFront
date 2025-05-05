@@ -1,1 +1,115 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* PrimeNG Core CSS */
+@import "primeicons/primeicons.css";
+
+/* Global styles */
+:root {
+  --primary-color: #3B82F6;
+  --text-color: #1F2937;
+  --background-color: #FFFFFF;
+  --error-color: #EF4444;
+  --success-color: #10B981;
+  --font-size-base: 16px;
+  --spacing-base: 1.5rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: var(--spacing-base);
+}
+
+.mb-4 {
+  margin-bottom: var(--spacing-base);
+}
+
+.p-4 {
+  padding: var(--spacing-base);
+}
+
+/* Custom styles for PrimeNG components */
+.p-inputtext {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.p-button {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.p-field {
+  margin-bottom: 1.5rem;
+}
+
+.p-field label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.p-field .p-error {
+  color: var(--error-color);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* Card styles */
+.p-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.p-card .p-card-content {
+  padding: 2rem;
+}
+
+/* Form container */
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 14px;
+    --spacing-base: 1rem;
+  }
+
+  .form-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .p-field {
+    margin-bottom: 1rem;
+  }
+  
+  .p-button {
+    margin-top: 0.75rem;
+  }
+}
