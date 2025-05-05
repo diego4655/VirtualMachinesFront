@@ -3,6 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm install 18.13.0
+        - nvm use 18.13.0
+        - node -v
         - npm cache clean --force
         - rm -rf node_modules
         - rm -f package-lock.json
@@ -10,6 +13,7 @@ frontend:
     build:
       commands:
         - npm run build -- --configuration=production
+        - ls -la dist/virtual-machines-front
   artifacts:
     baseDirectory: dist/virtual-machines-front
     files:
@@ -35,4 +39,6 @@ frontend:
     - source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|woff2|ttf|map|json)$)([^.]+$)/>'
       target: '/index.html'
       status: '200'
-      condition: null 
+    - source: '/<*>'
+      target: '/index.html'
+      status: '200' 
