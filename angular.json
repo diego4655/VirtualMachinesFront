@@ -24,8 +24,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [                            
-              "node_modules/primeicons/primeicons.css",
+            "styles": [                                          
               "src/styles.css"
             ],
             "scripts": []
@@ -81,8 +80,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [              
-              "node_modules/primeicons/primeicons.css",
+            "styles": [                            
               "src/styles.css"
             ],
             "scripts": []
