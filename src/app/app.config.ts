@@ -5,12 +5,19 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { jwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptors([jwtInterceptor])),
     ReactiveFormsModule,
-    provideAnimations()
+    provideAnimations(),
+    providePrimeNG({
+      theme: {
+          preset: Aura
+      }
+  })
   ]
 };
