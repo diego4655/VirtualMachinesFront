@@ -8,13 +8,14 @@ import { jwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptors([jwtInterceptor])),
     ReactiveFormsModule,
     provideAnimations(),
-    providePrimeNG({
+     providePrimeNG({
       theme: {
           preset: Aura
       }
